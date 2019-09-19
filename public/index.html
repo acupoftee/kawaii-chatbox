@@ -37,11 +37,23 @@
     </form>
   </div>
   <script src="lib/socket.io.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
   <script>
     const socket = io()
-    document.getElementById('message-form').on('submit', e => {
+    $('form').submit(e => {
+      // prevent page refresh 
       e.preventDefault()
-      socket.emit('chat message', document.getElementById('message').nodeValue)
+
+      // tell our server that someone sent a chat message
+      // pass the text as well
+      socket.emit('chat message', $('#message').val())
+
+      // clear the message in the form
+      $('#message').val('')
+      return false
     })
   </script>
 </body>
