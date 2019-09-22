@@ -47,7 +47,33 @@ h1 {
   flex: auto;
   flex-direction: column;
   padding: 15px 15px 0 15px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(69, 58, 148, 0.7);
+  overflow-y: scroll;
+}
+.chat-messages #messages .bubble {
+  flex: none;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 20px;
+  max-width: 60%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+.chat-messages #messages .bubble:nth-child(even) {
+  float: right;
+  border-bottom-right-radius: 0;
+  background-color: #453a94;
+  color: white;
+  transform-origin: top right;
+}
+.chat-messages #messages .bubble:nth-child(odd) {
+  float: left;
+  border-bottom-left-radius: 0;
+  background-color: white;
+  color: #453a94;
+  transform-origin: top left;
 }
 
 .input-container {

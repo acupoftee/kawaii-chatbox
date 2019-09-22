@@ -28,7 +28,7 @@
     </div>
 
     <div class="chat-messages">
-      <ul id="messages"></ul>
+      <div id="messages"></div>
       <i id="typing"></i>
     </div>
     <form class="input-container" id="message-form">
@@ -43,6 +43,7 @@
   crossorigin="anonymous"></script>
   <script>
     const socket = io()
+    const chatBubbleDiv = '<div class="bubble"></div>'
     $('form').submit(e => {
       // prevent page refresh 
       e.preventDefault()
@@ -54,6 +55,9 @@
       // clear the message in the form
       $('#message').val('')
       return false
+    })
+    socket.on('chat message', msg => {
+      $('#messages').append($(chatBubbleDiv).text(msg))
     })
   </script>
 </body>

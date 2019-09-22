@@ -57,7 +57,36 @@ h1 {
   flex: auto;
   flex-direction: column;
   padding: 15px 15px 0 15px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba($purple, 0.7);
+  overflow-y: scroll;
+
+  #messages {
+    .bubble {
+      flex: none;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 20px;
+      max-width: 60%;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-word;
+      hyphens: auto;
+      &:nth-child(even) {
+        float: right;
+        border-bottom-right-radius: 0;
+        background-color: $purple;
+        color: white;
+        transform-origin: top right;
+      } 
+      &:nth-child(odd) {
+        float: left;
+        border-bottom-left-radius: 0;
+        background-color: white;
+        color: $purple;
+        transform-origin: top left;
+      }
+    }
+  }
 }
 
 .input-container {
