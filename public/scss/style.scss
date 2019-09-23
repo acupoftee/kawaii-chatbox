@@ -28,7 +28,7 @@ h1 {
 
 .chat-window {
   height: 60vh;
-  width: 40vw;
+  width: 30vw;
   display: flex;
   flex-direction: column;
   border: 4px solid $purple;
@@ -61,29 +61,43 @@ h1 {
   overflow-y: scroll;
 
   #messages {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     .bubble {
-      flex: none;
       border-radius: 12px;
       padding: 1rem;
       margin-bottom: 20px;
-      max-width: 60%;
+
       overflow-wrap: break-word;
       word-wrap: break-word;
       word-break: break-word;
       hyphens: auto;
+
+      /**
+      Here align-self is used for the messages 
+      to override the default positions along the x-axis
+      */
+
       &:nth-child(even) {
-        float: right;
+        // text-align: right;
+        // justify-content: flex-start;
+        align-self: flex-end;
         border-bottom-right-radius: 0;
         background-color: $purple;
         color: white;
         transform-origin: top right;
+        max-width: 60%;
       } 
       &:nth-child(odd) {
-        float: left;
+        // text-align: left;
+        // justify-content: flex-end;
+        align-self: flex-start;
         border-bottom-left-radius: 0;
         background-color: white;
         color: $purple;
         transform-origin: top left;
+        max-width: 60%;
       }
     }
   }
