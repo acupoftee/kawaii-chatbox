@@ -57,7 +57,9 @@ h1 {
   flex: auto;
   flex-direction: column;
   padding: 15px 15px 0 15px;
-  background: rgba($purple, 0.7);
+  background: rgba(#db0035, 0.2);
+  // background: transparent;
+  // background: rgba($purple, 0);
   overflow-y: scroll;
 
   #messages {
@@ -73,31 +75,33 @@ h1 {
       word-wrap: break-word;
       word-break: break-word;
       hyphens: auto;
+      animation: appear .3s cubic-bezier(0.36, -0.04, 0.15, 1.64) forwards;
+      max-width: 60%;
 
       /**
       Here align-self is used for the messages 
-      to override the default positions along the x-axis
-      */
+      to override the default positions along the x-axis.
+      Because this is contained within a flex item with colums, 
+      each div is stacked, however the bubbles will be sized
+      according to the message length. 
 
+      Tradeoffs to this include incompatable styles 
+      for early versions of IE and Safari.
+      */
       &:nth-child(even) {
-        // text-align: right;
-        // justify-content: flex-start;
         align-self: flex-end;
         border-bottom-right-radius: 0;
         background-color: $purple;
         color: white;
-        transform-origin: top right;
-        max-width: 60%;
+        transform-origin: bottom right;
       } 
       &:nth-child(odd) {
-        // text-align: left;
-        // justify-content: flex-end;
         align-self: flex-start;
+        display: inline-block;
         border-bottom-left-radius: 0;
         background-color: white;
         color: $purple;
-        transform-origin: top left;
-        max-width: 60%;
+        transform-origin: bottom left;
       }
     }
   }
@@ -147,5 +151,13 @@ h1 {
     position: absolute;
     top: calc(50% - 0.5rem);
     left: calc(50% - 0.5rem);
+  }
+}
+@keyframes appear {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: none;
   }
 }
