@@ -19,6 +19,8 @@ io.on('connection', socket => {
   })
 })
 
-http.listen(7165, () => {
-  console.log('listening on port 7165')
+const port = process.env.PORT || 6165
+
+http.listen(port, () => {
+  console.log(`listening on port ${port}`)
 })
